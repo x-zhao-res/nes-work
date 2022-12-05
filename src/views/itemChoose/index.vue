@@ -13,10 +13,11 @@
             active-text-color="#158bb8"
             default-active="1"
             :collapse-transition="true"
+            @select="componentChange"
           >
             <el-menu-item index="1">
               <i style="font-size: 22px" class="el-icon-files"></i>
-              <span class="nav-item-text" slot="title">项目管理</span>
+              <span class="nav-item-text" slot="title">工程管理</span>
             </el-menu-item>
             <el-menu-item index="2">
               <i style="font-size: 22px" class="el-icon-share"></i>
@@ -37,26 +38,33 @@
         class="show-box-border"
         @mouseout="menuCollacp = true"
         @mouseenter="menuCollacp = true"
-      ></div>
+      >
+        <transition name="current-fade" mode="out-in">
+          <component :is="currentComponents"></component>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import itemChoose from "@/views/itemChoose/components/itemChoose";
+import mirrorManage from "@/views/itemChoose/components/mirrorManage";
+import networkTechTree from "@/views/itemChoose/components/networkTechTree";
+import simualSetting from "@/views/itemChoose/components/simualSetting";
 export default {
   name: "index.vue",
-  mounted() {
-    let menuBox = document.getElementById("menuBox");
-    menuBox.onmouseover = function () {
-      this.data().menuCollacp = true;
-    };
-    menuBox.onmouseout = function () {
-      this.data().menuCollacp = false;
-    };
+  components: {
+    itemChoose,
+    mirrorManage,
+    networkTechTree,
+    simualSetting,
   },
+  mounted() {},
   data() {
     return {
       menuCollacp: true,
+      currentComponents: "itemChoose",
     };
   },
   methods: {
@@ -64,11 +72,38 @@ export default {
       console.log(123);
       this.menuCollacp = !this.menuCollacp;
     },
+    componentChange(item) {
+      this.currentComponents =
+        item === "1"
+          ? "itemChoose"
+          : item === "2"
+          ? "networkTechTree"
+          : item === "3"
+          ? "mirrorManage"
+          : "simualSetting";
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+.current-fade-enter,
+.current-fade-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.current-fade-enter-active,
+.current-fade-leave-active {
+  transition: all 0.65s;
+}
+.v-enter,
+.v-leave-to {
+  opacity: 0;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.42s;
+}
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
@@ -90,6 +125,8 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-content: center;
+  overflow-y: hidden;
+  background-color: #263238;
   .left-border-box {
     width: 20%;
     height: 100%;
@@ -100,9 +137,7 @@ export default {
       width: auto;
       height: 50%;
       border-radius: 15px;
-      padding-top: 15px;
-      padding-left: 6px;
-      padding-right: 6px;
+      padding: 15px 6px 20px;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
       margin-right: 10px;
@@ -111,7 +146,7 @@ export default {
       justify-content: center;
       align-content: center;
       transition: width 0.25s;
-
+      background-color: white;
       .nav-menu {
         transition: width 0.25s;
       }
@@ -120,7 +155,10 @@ export default {
   .show-box-border {
     width: 60%;
     height: 100%;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
   }
 }
 </style>
