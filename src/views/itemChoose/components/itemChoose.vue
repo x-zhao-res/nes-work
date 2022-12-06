@@ -63,8 +63,10 @@ export default {
     overflow: auto;
     overflow-y: hidden;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    padding-top: 5px;
   }
 }
 </style>

@@ -126,7 +126,8 @@ export default {
   justify-content: flex-start;
   align-content: center;
   overflow-y: hidden;
-  background-color: #263238;
+  background-color: #548192;
+  // TODO 从新选择所用背景
   .left-border-box {
     width: 20%;
     height: 100%;

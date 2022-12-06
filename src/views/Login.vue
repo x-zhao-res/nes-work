@@ -5,8 +5,9 @@
         <div
           id="loginBox"
           ref="loginBox"
-          class="animate__animated animate__fadeIn animate__delay-1s login-box"
+          class="animate__animated animate__fadeIn login-box"
         >
+          <!--          // TODO 修改动画时间，让它看着舒服点 -->
           <div class="login-text">Nes-Work</div>
           <div
             class="input-username-box"
