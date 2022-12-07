@@ -50,11 +50,11 @@ export default {
       transition-duration: 0.4s;
       user-select: none;
       font-weight: bold;
-      color: #158bb8;
+      color: #285569;
     }
     .button:hover {
       color: white;
-      background-color: #158bb8;
+      background-color: #285569;
     }
   }
   .item-box {
