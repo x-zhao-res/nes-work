@@ -142,7 +142,6 @@ export default {
       padding: 15px 6px 20px;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      margin-right: 10px;
       margin-top: 40px;
       display: flex;
       justify-content: center;

@@ -83,7 +83,7 @@ export default {
                 ? "right"
                 : "left",
             style: {
-              fontFamily: "方正楷体",
+              fontFamily: "微软雅黑",
               fontWeight: "bold",
             },
           },
@@ -114,7 +114,7 @@ export default {
     return {
       graphInstance: null,
       data: {
-        id: "网络工程",
+        id: "网络技术树",
         children: [
           {
             id: "Rs",
